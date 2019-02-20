@@ -38,7 +38,7 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    var List = new ListNode(0)
+    var List = new ListNode(0);
     var head = List;
     var sum = 0;
     var carry = 0;
