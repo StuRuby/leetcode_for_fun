@@ -41,21 +41,22 @@
  * @return {number}
  */
 var reverse = function(x) {
-    var _x = x.toString();
-    var arr = _x.split('');
-    var flag = true;
-    debugger;
-    if (arr[0] === '-') {
-        arr = arr.splice(1);
-        flag = false;
+    const absoluteNumber = Math.abs(x);
+    const maxNumber = Math.pow(2, 31);
+    if (x === 0) {
+        return 0;
     }
-    arr = arr.reverse();
-    if (!flag) arr = ['-'].concat(arr);
-    arr = arr.join('');
-    var result = Number(arr);
-    if (result > Math.pow(2, 31) - 1 || result < -Math.pow(2, 31)) result = 0;
-    return result;
+
+    const isSigned = x > 0 ? false : true;
+
+    const reversedStr = `${absoluteNumber}`
+        .split('')
+        .reverse()
+        .join('');
+    const reversedNum = Number(reversedStr);
+
+    if (reversedNum > maxNumber - 1 || -reversedNum < -maxNumber) {
+        return 0;
+    }
+    return isSigned ? -reversedNum : reversedNum;
 };
-
-
-
